@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Equipo del Cliente:</strong>
+  <%= @equipo.cliente.nombre %>
+</p>
+
+<p>
+  <strong>Desc corta:</strong>
+  <%= @equipo.desc_corta %>
+</p>
+
+<p>
+  <strong>Serie:</strong>
+  <%= @equipo.serie %>
+</p>
+
+<p>
+  <strong>Marca:</strong>
+  <%= @equipo.marca %>
+</p>
+
+<p>
+  <strong>Modelo:</strong>
+  <%= @equipo.modelo %>
+</p>
+
+<p>
+  <strong>Ram:</strong>
+  <%= @equipo.ram %>
+</p>
+
+<p>
+  <strong>Hd:</strong>
+  <%= @equipo.hd %>
+</p>
+
+<%= link_to 'Editar este equipo', edit_cliente_equipo_path %> |
+<%= link_to 'Regresar al listado de equipos del cliente', cliente_equipos_path %>

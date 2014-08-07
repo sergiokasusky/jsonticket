@@ -1,0 +1,48 @@
+<h1>Edición de un equipo</h1>
+
+<%= form_for @equipo, url: cliente_equipo_path do |f| %>
+  <% if @equipo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@equipo.errors.count, "error") %> prohibited this equipo from being saved:</h2>
+
+      <ul>
+      <% @equipo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :desc_corta %><br>
+    <%= f.text_field :desc_corta %>
+  </div>
+  <div class="field">
+    <%= f.label :serie %><br>
+    <%= f.text_field :serie %>
+  </div>
+  <div class="field">
+    <%= f.label :marca %><br>
+    <%= f.text_field :marca %>
+  </div>
+  <div class="field">
+    <%= f.label :modelo %><br>
+    <%= f.text_field :modelo %>
+  </div>
+  <div class="field">
+    <%= f.label :ram %><br>
+    <%= f.text_field :ram %>
+  </div>
+  <div class="field">
+    <%= f.label :hd %><br>
+    <%= f.text_field :hd %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Guardar cambios"%>
+  </div>
+<% end %>
+
+
+<%= link_to 'Regresar al listado de equipos del cliente', cliente_equipos_path %> | 
+<%= link_to 'Mostrar detalle de este equipo', cliente_equipo_path %>

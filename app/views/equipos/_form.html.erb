@@ -1,0 +1,45 @@
+<%= form_for(@equipo) do |f| %>
+  <% if @equipo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@equipo.errors.count, "error") %> prohibited this equipo from being saved:</h2>
+
+      <ul>
+      <% @equipo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :desc_corta %><br>
+    <%= f.text_field :desc_corta %>
+  </div>
+  <div class="field">
+    <%= f.label :serie %><br>
+    <%= f.text_field :serie %>
+  </div>
+  <div class="field">
+    <%= f.label :marca %><br>
+    <%= f.text_field :marca %>
+  </div>
+  <div class="field">
+    <%= f.label :modelo %><br>
+    <%= f.text_field :modelo %>
+  </div>
+  <div class="field">
+    <%= f.label :ram %><br>
+    <%= f.text_field :ram %>
+  </div>
+  <div class="field">
+    <%= f.label :hd %><br>
+    <%= f.text_field :hd %>
+  </div>
+  <div class="field">
+    <%= f.label :cliente_id %><br>
+    <%= f.text_field :cliente_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
