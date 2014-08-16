@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :tickets
+
   resources :clientes do
     resources :equipos do
+      resources :tickets do
+      end
     end
   end
 

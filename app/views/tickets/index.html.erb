@@ -1,0 +1,33 @@
+<h1>Listado de reportes del equipo: <%= @equipo.desc_corta %></h1>
+
+<table border	="1">
+  <thead>
+    <tr>
+      <th>Abierto</th>
+      <th>Desc corta</th>
+      <th>Detalles</th>
+      <th>Equipo</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.abierto %></td>
+        <td><%= ticket.desc_corta %></td>
+        <td><%= ticket.detalles %></td>
+        <td><%= ticket.equipo.desc_corta %></td>
+        <td><%= link_to 'Mostrar', cliente_equipo_ticket_path(params[:cliente_id],params[:equipo_id],ticket) %></td>
+        <td><%= link_to 'Editar', edit_cliente_equipo_ticket_path(params[:cliente_id],params[:equipo_id],ticket) %></td>
+        <td><%= link_to 'Eliminar', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo reporte de este equipo',  new_cliente_equipo_ticket_path(params[:cliente_id], params[:equipo_id]) %>
+<br>
+<%= link_to 'Regresar a equipos del cliente',  cliente_equipos_path(params[:cliente_id]) %>

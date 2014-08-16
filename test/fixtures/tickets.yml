@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  abierto: false
+  desc_corta: MyString
+  detalles: MyString
+  equipo_id: 
+
+two:
+  abierto: false
+  desc_corta: MyString
+  detalles: MyString
+  equipo_id: 
