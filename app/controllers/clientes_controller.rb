@@ -60,6 +60,25 @@ class ClientesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def getalltickets
+    @cliente = Cliente.find(params[:id])
+    @tickets= @cliente.tickets
+    render json: @tickets
+  end
+  
+  def getopentickets
+    @cliente = Cliente.find(params[:id])
+    @tickets= @cliente.tickets.where("abierto = ?", true)
+    render json: @tickets
+  end
+  
+  def getclosedtickets
+    @cliente = Cliente.find(params[:id])
+    @tickets= @cliente.tickets.where("abierto = ?", false)
+    render json: @tickets
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
   resources :tickets
-
   resources :clientes do
+    member do
+         get :getalltickets
+         get :getopentickets
+         get :getclosedtickets
+    end
     resources :equipos do
       resources :tickets do
       end
