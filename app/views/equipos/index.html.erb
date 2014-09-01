@@ -26,8 +26,8 @@
         <td><%= equipo.cliente.nombre %></td>
 		<td><%= link_to 'Mostrar detalle', cliente_equipo_path(@cliente, equipo) %></td>
 		<td><%= link_to 'Editar equipo', edit_cliente_equipo_path(@cliente, equipo) %></td>
-		<td><%= link_to 'Nuevo reporte',  new_cliente_equipo_ticket_path(@cliente, equipo) %></td>
-		<td><%= link_to 'Reportes de este equipo',  cliente_equipo_tickets_path(@cliente, equipo) %></td>
+		<td><%= link_to 'Nuevo reporte',  new_equipo_ticket_path(equipo) %></td>
+		<td><%= link_to 'Reportes de este equipo', equipo_tickets_path(equipo) %></td>
 		<td><%= link_to 'Eliminar', cliente_equipo_path(@cliente, equipo), method: :delete, data: { confirm: '¿Está seguro?' } %></td>
       </tr>
     <% end %>
@@ -38,5 +38,5 @@
 
 <%= link_to 'Nuevo Equipo', new_cliente_equipo_path %>
 <br>
-<%= link_to 'Regresar', clientes_path %>
+<%= link_to 'Regresar a lista de clientes', clientes_path %>
 

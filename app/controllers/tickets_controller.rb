@@ -16,6 +16,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
+    @equipo = Equipo.find(params[:equipo_id])
     @ticket = Ticket.new
   end
 
@@ -32,7 +33,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to cliente_equipo_ticket_path(@ticket.equipo.cliente_id, @ticket.equipo.id, @ticket), notice: 'Ticket was successfully created.' }
+        format.html { redirect_to equipo_ticket_path(@ticket.equipo.id, @ticket), notice: 'El ticket fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @ticket }
       else
         format.html { render :new }
@@ -46,7 +47,7 @@ class TicketsController < ApplicationController
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
-        format.html { redirect_to cliente_equipo_ticket_path(@ticket.equipo.cliente_id, @ticket.equipo.id, @ticket), notice: 'Ticket was successfully updated.' }
+        format.html { redirect_to equipo_ticket_path(@ticket.equipo.id, @ticket), notice: 'El ticket fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
         format.html { render :edit }
@@ -60,7 +61,7 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     respond_to do |format|
-      format.html { redirect_to cliente_equipo_tickets_path(@ticket.equipo.cliente.id, @ticket.equipo.id), notice: 'El ticket fue eliminado exitosamente' }
+      format.html { redirect_to equipo_tickets_path(@ticket.equipo.id), notice: 'El ticket fue eliminado exitosamente' }
       format.json { head :no_content }
     end
   end

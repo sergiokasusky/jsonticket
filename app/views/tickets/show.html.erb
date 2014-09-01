@@ -21,6 +21,6 @@
   <%= @ticket.detalles %>
 </p>
 
-<%= link_to 'Editar este reporte', edit_cliente_equipo_ticket_path(params[:cliente_id],params[:equipo_id],@ticket) %>
+<%= link_to 'Editar este reporte', edit_equipo_ticket_path(params[:equipo_id],@ticket) %>
 <br>
-<%= link_to 'Regresar a listado de reportes de este equipo', cliente_equipo_tickets_path %>
+<%= link_to 'Regresar a listado de reportes de este equipo', equipo_tickets_path %>

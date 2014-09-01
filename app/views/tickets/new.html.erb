@@ -1,4 +1,4 @@
-<h1>Nuevo reporte del equipo ?</h1>
+<h1>Nuevo reporte del equipo <%= @equipo.desc_corta %> </h1>
 <%= params.inspect %>
 <%= form_for(@ticket) do |f| %>
   <% if @ticket.errors.any? %>
@@ -30,4 +30,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Regresar a reportes de este equipo', cliente_equipo_tickets_path %>
+<%= link_to 'Regresar a reportes de este equipo', equipo_tickets_path %>

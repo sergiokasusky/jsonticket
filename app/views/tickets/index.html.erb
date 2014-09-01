@@ -18,9 +18,9 @@
         <td><%= ticket.desc_corta %></td>
         <td><%= ticket.detalles %></td>
         <td><%= ticket.equipo.desc_corta %></td>
-        <td><%= link_to 'Mostrar', cliente_equipo_ticket_path(params[:cliente_id],params[:equipo_id],ticket) %></td>
-        <td><%= link_to 'Editar', edit_cliente_equipo_ticket_path(params[:cliente_id],params[:equipo_id],ticket) %></td>
-        <td><%= link_to 'Eliminar', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', equipo_ticket_path(params[:equipo_id],ticket) %></td>
+        <td><%= link_to 'Editar', edit_equipo_ticket_path(params[:equipo_id],ticket) %></td>
+        <td><%= link_to 'Eliminar', equipo_ticket_path(@equipo, ticket), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,6 +28,6 @@
 
 <br>
 
-<%= link_to 'Nuevo reporte de este equipo',  new_cliente_equipo_ticket_path(params[:cliente_id], params[:equipo_id]) %>
+<%= link_to 'Nuevo reporte de este equipo',  new_equipo_ticket_path(params[:equipo_id]) %>
 <br>
-<%= link_to 'Regresar a equipos del cliente',  cliente_equipos_path(params[:cliente_id]) %>
+<%= link_to 'Regresar a equipos del cliente',  cliente_equipos_path(@equipo.cliente_id) %>

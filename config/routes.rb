@@ -1,18 +1,37 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do 
 
-  resources :tickets
+  #resources :tickets
+  #resources :clientes do
+  #  member do
+  #       get :getalltickets
+  #       get :getopentickets
+  #       get :getclosedtickets
+  #  end
+  #  resources :equipos do
+  #    resources :tickets do
+  #    end
+  #  end
+  #end
+  
   resources :clientes do
     member do
-         get :getalltickets
-         get :getopentickets
-         get :getclosedtickets
-    end
-    resources :equipos do
-      resources :tickets do
-      end
-    end
+      get :getalltickets
+      get :getopentickets
+      get :getclosedtickets
+    end 
+    resources :equipos, :name_prefix => "cliente_"
+  end
+  
+  resources :equipos do 
+    resources :tickets, :name_prefix => "equipo_"
   end
 
+  resources :tickets do
+    resources :comentarios, :name_prefix => "ticket_"
+  end
+  
+  resources :comentarios
+  
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
