@@ -27,9 +27,10 @@ class ClientesController < ApplicationController
     @cliente = Cliente.new(cliente_params)
 
     respond_to do |format|
-      if @cliente.save
+      if @cliente.save        
+        format.json { render :json => @cliente }
         format.html { redirect_to @cliente, notice: 'Cliente was successfully created.' }
-        format.json { render :show, status: :created, location: @cliente }
+        #format.json { render json: :show, status: :created, location: @cliente }
       else
         format.html { render :new }
         format.json { render json: @cliente.errors, status: :unprocessable_entity }
@@ -62,7 +63,7 @@ class ClientesController < ApplicationController
   end
   
   def getalltickets
-    @cliente = Cliente.find(params[:id])
+    @cliente= Cliente.find(params[:id])
     @tickets= @cliente.tickets
     render json: @tickets
   end
@@ -84,6 +85,9 @@ class ClientesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_cliente
       @cliente = Cliente.find(params[:id])
+      rescue
+        #redirect_to clientes_path
+        raise ActionController::RoutingError.new('No encontrado')
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

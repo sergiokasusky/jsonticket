@@ -1,5 +1,11 @@
 Rails.application.routes.draw do 
 
+  #get 'sessions/new'
+
+  #get 'sessions/create'
+
+  #get 'sessions/destroy'
+
   #resources :tickets
   #resources :clientes do
   #  member do
@@ -31,6 +37,10 @@ Rails.application.routes.draw do
   end
   
   resources :comentarios
+  
+  resources :sessions, only: [:new, :create, :destroy]
+    get '/signin',  to: 'sessions#new'
+    get '/signout', to: 'sessions#destroy'
   
   get 'welcome/index'
 

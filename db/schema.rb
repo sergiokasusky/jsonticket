@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807054733) do
+ActiveRecord::Schema.define(version: 20140905044607) do
 
   create_table "clientes", force: true do |t|
     t.string   "nombre"
@@ -47,5 +47,13 @@ ActiveRecord::Schema.define(version: 20140807054733) do
   end
 
   add_index "tickets", ["equipo_id"], name: "index_tickets_on_equipo_id"
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "password"
+    t.string   "remember_session"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
