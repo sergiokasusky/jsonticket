@@ -3,13 +3,11 @@ class SessionsController < ApplicationController
   end
  
   def create
-    user= User.find_by(email: params[:session][:email], password: params[:session][:password])
-    if (user != nil)
+    if user = Cliente.find_by(params[:email], params[:password])
       session[:current_user_id] = user.id
       redirect_to clientes_path
     else
-      render 'new', notice: 'Usuario o password no válidos' 
-      #render "error"
+      render 'new'
     end
   end
  

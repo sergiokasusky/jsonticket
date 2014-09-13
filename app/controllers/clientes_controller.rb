@@ -5,6 +5,7 @@ class ClientesController < ApplicationController
   # GET /clientes.json
   def index
     @clientes = Cliente.all
+    cookies[:name] = { :value => "valor de la cookie", :expires => Time.now + 3600}
   end
 
   # GET /clientes/1
@@ -28,9 +29,9 @@ class ClientesController < ApplicationController
 
     respond_to do |format|
       if @cliente.save        
-        format.json { render :json => @cliente }
-        format.html { redirect_to @cliente, notice: 'Cliente was successfully created.' }
-        #format.json { render json: :show, status: :created, location: @cliente }
+        format.html { redirect_to @cliente, notice: 'El cliente fue creado exitosamente' }
+        format.json { render json: @cliente, status: :created, location: @cliente }
+        #En producción ¿tiene caso mostrar lo creado? format.json { render json: @cliente, status: :created, location: @cliente }
       else
         format.html { render :new }
         format.json { render json: @cliente.errors, status: :unprocessable_entity }
@@ -43,7 +44,7 @@ class ClientesController < ApplicationController
   def update
     respond_to do |format|
       if @cliente.update(cliente_params)
-        format.html { redirect_to @cliente, notice: 'Cliente was successfully updated.' }
+        format.html { redirect_to @cliente, notice: 'El cliente fue acttualizado exitosamente' }
         format.json { render :show, status: :ok, location: @cliente }
       else
         format.html { render :edit }
@@ -87,7 +88,7 @@ class ClientesController < ApplicationController
       @cliente = Cliente.find(params[:id])
       rescue
         #redirect_to clientes_path
-        raise ActionController::RoutingError.new('No encontrado')
+        raise ActionController::RoutingError.new('404 No encontrado')
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

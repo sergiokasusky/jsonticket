@@ -1,5 +1,21 @@
 Rails.application.routes.draw do 
 
+  get 'sesiones/login'
+
+  get 'sesiones/logout'
+
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
+  get 'test_sesiones/iniciar_sesion'
+
+  get 'test_sesiones/cerrar_sesion'
+
+  get 'test_sesiones/bienvenida'
+
   #get 'sessions/new'
 
   #get 'sessions/create'
@@ -38,9 +54,20 @@ Rails.application.routes.draw do
   
   resources :comentarios
   
+  
   resources :sessions, only: [:new, :create, :destroy]
     get '/signin',  to: 'sessions#new'
     get '/signout', to: 'sessions#destroy'
+  
+  
+  get "test_sesiones/iniciar_sesion"
+  post "test_sesiones/iniciar_sesion"
+  
+  post "sesiones/login"
+  
+  #resources :sessions, only: [:new, :create, :destroy]
+   # get '/signin',  to: 'sessions#new'
+    #get '/signout', to: 'sessions#destroy'
   
   get 'welcome/index'
 
