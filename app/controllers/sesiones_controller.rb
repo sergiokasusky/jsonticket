@@ -4,7 +4,12 @@ class SesionesController < ApplicationController
         email= params[:email]
         password= params[:password]
         @cliente = Cliente.find_by email: email, password: password
-        render json: @cliente
+        if (@cliente != nil)
+          render json: @cliente
+        else
+          @cliente = Cliente.new
+          render json: @cliente
+        end
         #if (@cliente != nil) 
         #  render json: @cliente
         #else
