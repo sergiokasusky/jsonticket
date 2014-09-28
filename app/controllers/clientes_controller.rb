@@ -66,19 +66,49 @@ class ClientesController < ApplicationController
   def getalltickets
     @cliente= Cliente.find(params[:id])
     @tickets= @cliente.tickets
-    render json: @tickets
+    @reportes= Array.new
+    reporte= Hash.new("reporte")
+    @tickets.each do |ticket|
+      reporte = {"id" => ticket.id, "abierto" => ticket.abierto, "desc_corta" => ticket.desc_corta, "detalles" => ticket.detalles, 
+        "equipo_id" => ticket.equipo_id, "equipo_desc_corta" => ticket.equipo.desc_corta, "created_at" => ticket.created_at}
+      @reportes.push reporte
+    end
+    respond_to do |format|
+      format.json {render json: @reportes  }
+    end
+    #render json: @tickets
   end
   
   def getopentickets
     @cliente = Cliente.find(params[:id])
     @tickets= @cliente.tickets.where("abierto = ?", true)
-    render json: @tickets
+    @reportes= Array.new
+    reporte= Hash.new("reporte")
+    @tickets.each do |ticket|
+      reporte = {"id" => ticket.id, "abierto" => ticket.abierto, "desc_corta" => ticket.desc_corta, "detalles" => ticket.detalles, 
+        "equipo_id" => ticket.equipo_id, "equipo_desc_corta" => ticket.equipo.desc_corta, "created_at" => ticket.created_at}
+      @reportes.push reporte
+    end
+    respond_to do |format|
+      format.json {render json: @reportes  }
+    end
+    #render json: @tickets
   end
   
   def getclosedtickets
     @cliente = Cliente.find(params[:id])
     @tickets= @cliente.tickets.where("abierto = ?", false)
-    render json: @tickets
+    @reportes= Array.new
+    reporte= Hash.new("reporte")
+    @tickets.each do |ticket|
+      reporte = {"id" => ticket.id, "abierto" => ticket.abierto, "desc_corta" => ticket.desc_corta, "detalles" => ticket.detalles, 
+        "equipo_id" => ticket.equipo_id, "equipo_desc_corta" => ticket.equipo.desc_corta, "created_at" => ticket.created_at}
+      @reportes.push reporte
+    end
+    respond_to do |format|
+      format.json {render json: @reportes  }
+    end
+    #render json: @tickets
   end
   
 
