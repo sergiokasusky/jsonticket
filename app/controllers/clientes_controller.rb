@@ -5,12 +5,14 @@ class ClientesController < ApplicationController
   # GET /clientes.json
   def index
     @clientes = Cliente.all
-    cookies[:name] = { :value => "valor de la cookie", :expires => Time.now + 3600}
+    render json: @clientes
+    #cookies[:name] = { :value => "valor de la cookie", :expires => Time.now + 3600}
   end
 
   # GET /clientes/1
   # GET /clientes/1.json
   def show
+    render json: @cliente
   end
 
   # GET /clientes/new

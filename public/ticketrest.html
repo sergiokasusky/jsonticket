@@ -1,0 +1,48 @@
+<html>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<head>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular-resource.js"></script>
+	  <script src="ticketrest.js"></script>
+	</head>
+  	<body> 
+		 <div ng-app="myApp" ng-controller="ClienteIndexCtrl">
+			<table border=1>
+				<tr>
+				    <th>Id</th>
+					<th>Nombre</th>
+					<th>Teléfono</th>
+					<th>Dirección</th>
+					<th>E-mail</th>
+				</tr>
+				<tr ng-repeat="cliente in clientes">
+			    	<td>{{cliente.id}}</td>
+					<td>{{cliente.nombre}}</td>
+					<td>{{cliente.telefono}}</td>
+					<td>{{cliente.direccion}}</td>
+					<td>{{cliente.email}}</td>
+				</tr>
+			</table>
+   		 	<div ng-controller="ClienteShowCtrl">
+   				<table border=1>
+   				<tr>
+   				    <th>Id</th>
+   					<th>Nombre</th>
+   					<th>Teléfono</th>
+   					<th>Dirección</th>
+   					<th>E-mail</th>
+   				</tr>
+   				<tr>
+   			    	<td>{{uncliente.id}}</td>
+   					<td>{{uncliente.nombre}}</td>
+   					<td>{{uncliente.telefono}}</td>
+   					<td>{{uncliente.direccion}}</td>
+   					<td>{{uncliente.email}}</td>
+   				</tr>
+   			</table>
+   		 	</div>			
+		 </div>
+		 
+		 			
+	</body>
+	</html>
